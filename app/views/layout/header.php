@@ -88,9 +88,12 @@
                                     <a href="/loan-types" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Loan Types</a>
                                     <a href="/leave-types" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Leave Types</a>
                                     <a href="/holidays" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Holidays</a>
+                                    <a href="/cost-centers" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cost Centers</a>
+                                    <a href="/tax-slabs" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tax Slabs</a>
                                     <?php if (isset($_SESSION['permissions']) && (str_contains($_SESSION['permissions'], 'users') || $_SESSION['permissions'] === 'all')): ?>
                                         <div class="border-t border-gray-100"></div>
                                         <a href="/users" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">User Management</a>
+                                        <a href="/settings" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">System Settings</a>
                                     <?php endif; ?>
                                 </div>
                             </div>

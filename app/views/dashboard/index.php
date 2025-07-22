@@ -159,6 +159,11 @@ include __DIR__ . '/../layout/header.php';
                             <span class="text-sm font-medium text-gray-700">Generate Reports</span>
                         </a>
                         
+                        <a href="/payroll/payslips" class="w-full flex items-center px-4 py-3 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-file-invoice text-indigo-600 mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">View Payslips</span>
+                        </a>
+                        
                         <a href="/employees?status=active" class="w-full flex items-center px-4 py-3 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition-colors duration-200">
                             <i class="fas fa-search text-indigo-600 mr-3"></i>
                             <span class="text-sm font-medium text-gray-700">View Employees</span>

@@ -104,6 +104,26 @@ $router->addRoute('POST', '/payroll/process', 'Payroll', 'process');
 $router->addRoute('POST', '/payroll/lock-period', 'Payroll', 'lockPeriod');
 $router->addRoute('GET', '/payroll/payslip/{employeeId}/{periodId}', 'Payroll', 'payslip');
 
+$router->addRoute('GET', '/cost-centers', 'CostCenter', 'index');
+$router->addRoute('POST', '/cost-centers', 'CostCenter', 'index');
+
+// Settings routes
+$router->addRoute('GET', '/settings', 'Settings', 'index');
+$router->addRoute('POST', '/settings/general', 'Settings', 'updateGeneral');
+$router->addRoute('POST', '/settings/payroll', 'Settings', 'updatePayroll');
+$router->addRoute('POST', '/settings/email', 'Settings', 'updateEmail');
+$router->addRoute('POST', '/settings/test-email', 'Settings', 'testEmail');
+$router->addRoute('GET', '/settings/backup', 'Settings', 'backup');
+$router->addRoute('POST', '/settings/backup', 'Settings', 'backup');
+
+// Payslip management routes
+$router->addRoute('GET', '/payroll/payslips', 'Payroll', 'payslips');
+$router->addRoute('POST', '/payroll/email-payslip/{employeeId}/{periodId}', 'Payroll', 'emailPayslip');
+
+// Tax slab routes
+$router->addRoute('GET', '/tax-slabs', 'TaxSlab', 'index');
+$router->addRoute('POST', '/tax-slabs', 'TaxSlab', 'index');
+
 // Master data routes
 $router->addRoute('GET', '/departments', 'Department', 'index');
 $router->addRoute('POST', '/departments', 'Department', 'index');

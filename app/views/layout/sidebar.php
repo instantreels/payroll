@@ -75,6 +75,8 @@
                     <a href="/loan-types" class="block px-10 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md">Loan Types</a>
                     <a href="/leave-types" class="block px-10 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md">Leave Types</a>
                     <a href="/holidays" class="block px-10 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md">Holidays</a>
+                    <a href="/cost-centers" class="block px-10 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md">Cost Centers</a>
+                    <a href="/tax-slabs" class="block px-10 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md">Tax Slabs</a>
                 </div>
             </div>
             
@@ -83,6 +85,12 @@
             <a href="/users" class="sidebar-link <?php echo str_contains($_SERVER['REQUEST_URI'], '/users') ? 'active' : ''; ?> group flex items-center px-3 py-2 text-sm font-medium rounded-md">
                 <i class="fas fa-user-cog mr-3 text-gray-400 group-hover:text-gray-500"></i>
                 Users
+            </a>
+            
+            <!-- Settings -->
+            <a href="/settings" class="sidebar-link <?php echo str_contains($_SERVER['REQUEST_URI'], '/settings') ? 'active' : ''; ?> group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                <i class="fas fa-cogs mr-3 text-gray-400 group-hover:text-gray-500"></i>
+                Settings
             </a>
             <?php endif; ?>
         </div>

@@ -166,11 +166,11 @@ include __DIR__ . '/../layout/header.php';
                     </div>
                 </a>
                 
-                <a href="/reports/saved-reports" class="block p-3 rounded-md hover:bg-gray-50 transition-colors duration-200">
+                <a href="/payroll/payslips" class="block p-3 rounded-md hover:bg-gray-50 transition-colors duration-200">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h4 class="text-sm font-medium text-gray-900">Saved Reports</h4>
-                            <p class="text-xs text-gray-500">Previously saved report templates</p>
+                            <h4 class="text-sm font-medium text-gray-900">Payslip Management</h4>
+                            <p class="text-xs text-gray-500">Generate and manage payslips</p>
                         </div>
                         <i class="fas fa-chevron-right text-gray-400"></i>
                     </div>

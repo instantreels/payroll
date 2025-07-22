@@ -82,12 +82,20 @@ A comprehensive, enterprise-grade Payroll Management System built with **Core PH
 - Integration with payroll processing
 - Mobile-friendly attendance interface
 
-### 💳 Enhanced Loan Management
-- Multiple loan types with different terms
-- Automated EMI calculations
-- Payment tracking and history
-- Outstanding balance management
-- Loan performance analytics
+### ⚙️ System Configuration
+- General settings (company info, currency, timezone)
+- Payroll settings (PF/ESI rates, tax configuration)
+- Email settings (SMTP configuration)
+- Security settings (session timeout, password policies)
+- Backup management (automated and manual backups)
+
+### 🎯 Advanced Features
+- Cost center management for financial tracking
+- Tax slab configuration for different financial years
+- Custom report builder with flexible data selection
+- Payslip management with email delivery
+- Multi-format export capabilities (Excel, CSV, PDF)
+- Real-time dashboard widgets and analytics
 
 ## 🛠️ Technical Architecture
 
