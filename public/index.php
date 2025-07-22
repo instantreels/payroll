@@ -113,10 +113,40 @@ $router->addRoute('GET', '/holidays', 'Holiday', 'index');
 // Report routes
 $router->addRoute('GET', '/reports', 'Report', 'index');
 $router->addRoute('GET', '/reports/salary-register', 'Report', 'salaryRegister');
+$router->addRoute('POST', '/reports/salary-register', 'Report', 'salaryRegister');
 $router->addRoute('GET', '/reports/payslip', 'Report', 'payslip');
+
+// Attendance routes
+$router->addRoute('GET', '/attendance', 'Attendance', 'index');
+$router->addRoute('GET', '/attendance/mark', 'Attendance', 'mark');
+$router->addRoute('POST', '/attendance/mark', 'Attendance', 'mark');
+$router->addRoute('POST', '/attendance/bulk-mark', 'Attendance', 'bulkMark');
+$router->addRoute('GET', '/attendance/report', 'Attendance', 'report');
+$router->addRoute('POST', '/attendance/report', 'Attendance', 'report');
+
+// Loan routes
+$router->addRoute('GET', '/loans', 'Loan', 'index');
+$router->addRoute('GET', '/loans/create', 'Loan', 'create');
+$router->addRoute('POST', '/loans/create', 'Loan', 'create');
+$router->addRoute('GET', '/loans/{id}', 'Loan', 'view');
+$router->addRoute('GET', '/loans/{id}/payment', 'Loan', 'payment');
+$router->addRoute('POST', '/loans/{id}/payment', 'Loan', 'payment');
+
+// User management routes
+$router->addRoute('GET', '/users', 'User', 'index');
+$router->addRoute('GET', '/users/create', 'User', 'create');
+$router->addRoute('POST', '/users/create', 'User', 'create');
+$router->addRoute('GET', '/users/{id}/edit', 'User', 'edit');
+$router->addRoute('POST', '/users/{id}/edit', 'User', 'edit');
 
 // API routes for AJAX calls
 $router->addRoute('GET', '/api/dashboard-widgets', 'Dashboard', 'getWidgetData');
+$router->addRoute('GET', '/api/attendance-summary', 'Attendance', 'getSummary');
+$router->addRoute('GET', '/api/current-period', 'Payroll', 'getCurrentPeriod');
+$router->addRoute('GET', '/api/attendance-summary', 'Api', 'attendanceSummary');
+$router->addRoute('GET', '/api/current-period', 'Api', 'currentPeriod');
+$router->addRoute('GET', '/api/employee-search', 'Api', 'employeeSearch');
+$router->addRoute('GET', '/api/salary-calculator', 'Api', 'salaryCalculator');
 
 // Static file serving (for development)
 $requestUri = $_SERVER['REQUEST_URI'];
