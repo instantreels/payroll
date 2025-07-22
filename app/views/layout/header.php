@@ -70,6 +70,11 @@
                             <i class="fas fa-hand-holding-usd mr-2"></i>
                             Loans
                         </a>
+                        
+                        <a href="/pf" class="nav-link <?php echo str_contains($_SERVER['REQUEST_URI'], '/pf') ? 'border-primary-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'; ?> inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            <i class="fas fa-piggy-bank mr-2"></i>
+                            PF Management
+                        </a>
                         <?php endif; ?>
                         
                         <!-- Masters Dropdown -->

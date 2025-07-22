@@ -168,6 +168,11 @@ include __DIR__ . '/../layout/header.php';
                             <i class="fas fa-search text-indigo-600 mr-3"></i>
                             <span class="text-sm font-medium text-gray-700">View Employees</span>
                         </a>
+                        
+                        <a href="/pf" class="w-full flex items-center px-4 py-3 bg-green-50 hover:bg-green-100 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-piggy-bank text-green-600 mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">PF Management</span>
+                        </a>
                     </div>
                 </div>
             </div>

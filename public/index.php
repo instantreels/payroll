@@ -138,6 +138,17 @@ $router->addRoute('POST', '/leave-types', 'LeaveType', 'index');
 $router->addRoute('GET', '/holidays', 'Holiday', 'index');
 $router->addRoute('POST', '/holidays', 'Holiday', 'index');
 
+$router->addRoute('GET', '/pf', 'PF', 'index');
+$router->addRoute('GET', '/pf/ecr-generation', 'PF', 'ecrGeneration');
+$router->addRoute('POST', '/pf/ecr-generation', 'PF', 'ecrGeneration');
+$router->addRoute('GET', '/pf/reports', 'PF', 'pfReports');
+$router->addRoute('POST', '/pf/reports', 'PF', 'pfReports');
+$router->addRoute('GET', '/pf/contributions', 'PF', 'pfContributions');
+$router->addRoute('GET', '/pf/reconciliation', 'PF', 'pfReconciliation');
+$router->addRoute('POST', '/pf/reconciliation', 'PF', 'pfReconciliation');
+$router->addRoute('GET', '/pf/settings', 'PF', 'pfSettings');
+$router->addRoute('POST', '/pf/settings', 'PF', 'pfSettings');
+
 // Report routes
 $router->addRoute('GET', '/reports', 'Report', 'index');
 $router->addRoute('GET', '/reports/salary-register', 'Report', 'salaryRegister');
