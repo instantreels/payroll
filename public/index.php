@@ -98,22 +98,34 @@ $router->addRoute('GET', '/employees/export', 'Employee', 'export');
 // Payroll routes
 $router->addRoute('GET', '/payroll', 'Payroll', 'index');
 $router->addRoute('GET', '/payroll/periods', 'Payroll', 'periods');
+$router->addRoute('POST', '/payroll/periods', 'Payroll', 'periods');
 $router->addRoute('GET', '/payroll/process', 'Payroll', 'process');
 $router->addRoute('POST', '/payroll/process', 'Payroll', 'process');
+$router->addRoute('POST', '/payroll/lock-period', 'Payroll', 'lockPeriod');
 $router->addRoute('GET', '/payroll/payslip/{employeeId}/{periodId}', 'Payroll', 'payslip');
 
 // Master data routes
 $router->addRoute('GET', '/departments', 'Department', 'index');
+$router->addRoute('POST', '/departments', 'Department', 'index');
 $router->addRoute('GET', '/designations', 'Designation', 'index');
+$router->addRoute('POST', '/designations', 'Designation', 'index');
 $router->addRoute('GET', '/salary-components', 'SalaryComponent', 'index');
+$router->addRoute('POST', '/salary-components', 'SalaryComponent', 'index');
 $router->addRoute('GET', '/loan-types', 'LoanType', 'index');
+$router->addRoute('POST', '/loan-types', 'LoanType', 'index');
 $router->addRoute('GET', '/leave-types', 'LeaveType', 'index');
+$router->addRoute('POST', '/leave-types', 'LeaveType', 'index');
 $router->addRoute('GET', '/holidays', 'Holiday', 'index');
+$router->addRoute('POST', '/holidays', 'Holiday', 'index');
 
 // Report routes
 $router->addRoute('GET', '/reports', 'Report', 'index');
 $router->addRoute('GET', '/reports/salary-register', 'Report', 'salaryRegister');
 $router->addRoute('POST', '/reports/salary-register', 'Report', 'salaryRegister');
+$router->addRoute('GET', '/reports/component-report', 'Report', 'componentReport');
+$router->addRoute('POST', '/reports/component-report', 'Report', 'componentReport');
+$router->addRoute('GET', '/reports/bank-transfer', 'Report', 'bankTransfer');
+$router->addRoute('POST', '/reports/bank-transfer', 'Report', 'bankTransfer');
 $router->addRoute('GET', '/reports/payslip', 'Report', 'payslip');
 
 // Attendance routes
