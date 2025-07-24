@@ -146,8 +146,8 @@ if (typeof WebSocket !== 'undefined') {
                 // Send user authentication
                 ws.send(JSON.stringify({
                     type: 'auth',
-                    user_id: '<?php echo $_SESSION['user_id'] ?? ''; ?>',
-                    token: '<?php echo $_SESSION['csrf_token'] ?? ''; ?>'
+                    user_id: '<?php echo $_SESSION[\'user_id'] ?? ''; ?>',
+                    token: '<?php echo $_SESSION[\'csrf_token'] ?? ''; ?>'
                 }));
             };
             
