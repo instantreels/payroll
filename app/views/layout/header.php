@@ -124,6 +124,12 @@
                                 </div>
                                 <div class="max-h-64 overflow-y-auto" id="notifications-list">
                                     <div class="px-4 py-3 text-sm text-gray-500 text-center">
+                                        <a href="/audit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                            <i class="fas fa-history mr-2"></i>Audit Logs
+                                        </a>
+                                        <a href="/system-info" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                            <i class="fas fa-info-circle mr-2"></i>System Info
+                                        </a>
                                         Loading notifications...
                                     </div>
                                 </div>
@@ -178,6 +184,14 @@
         </div>
     </nav>
     <?php endif; ?>
+
+    <!-- Common JavaScript -->
+    <script src="/public/js/app.js"></script>
+    <script src="/public/js/notifications.js"></script>
+    <script src="/public/js/advanced-features.js"></script>
+    
+    <!-- Page-specific scripts -->
+    <?php if (isset($scripts)): ?>
 
     <script>
         function toggleDropdown(id) {

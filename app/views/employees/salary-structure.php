@@ -49,7 +49,7 @@ include __DIR__ . '/../layout/header.php';
     </div>
 
     <!-- Salary Structure Form -->
-    <form method="POST" class="space-y-6">
+    <form method="POST" id="salary-structure-form" class="space-y-6">
         <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
         
         <div class="bg-white shadow-sm rounded-lg border border-gray-200">
@@ -72,7 +72,11 @@ include __DIR__ . '/../layout/header.php';
                     <div class="space-y-4">
                         <?php foreach ($salary_components as $component): ?>
                             <?php if ($component['type'] === 'earning'): ?>
-                                <div class="flex items-center justify-between p-4 bg-green-50 rounded-lg">
+                                <div class="component-row earning-component flex items-center justify-between p-4 bg-green-50 rounded-lg" 
+                                     data-component-code="<?php echo $component['code']; ?>"
+                                     data-component-type="<?php echo $component['type']; ?>"
+                                     data-component-name="<?php echo htmlspecialchars($component['name']); ?>"
+                                     data-formula="<?php echo htmlspecialchars($component['formula'] ?? ''); ?>">
                                     <div class="flex-1">
                                         <label class="block text-sm font-medium text-gray-900">
                                             <?php echo htmlspecialchars($component['name']); ?>
@@ -93,7 +97,7 @@ include __DIR__ . '/../layout/header.php';
                                             <input type="number" 
                                                    name="components[<?php echo $component['id']; ?>]" 
                                                    value="<?php echo $current_amounts[$component['id']] ?? ''; ?>"
-                                                   class="form-input w-32 text-right" 
+                                                   class="component-amount form-input w-32 text-right" 
                                                    step="0.01" 
                                                    placeholder="0.00"
                                                    <?php echo $component['is_mandatory'] ? 'required' : ''; ?>>
@@ -111,7 +115,11 @@ include __DIR__ . '/../layout/header.php';
                     <div class="space-y-4">
                         <?php foreach ($salary_components as $component): ?>
                             <?php if ($component['type'] === 'deduction'): ?>
-                                <div class="flex items-center justify-between p-4 bg-red-50 rounded-lg">
+                                <div class="component-row deduction-component flex items-center justify-between p-4 bg-red-50 rounded-lg"
+                                     data-component-code="<?php echo $component['code']; ?>"
+                                     data-component-type="<?php echo $component['type']; ?>"
+                                     data-component-name="<?php echo htmlspecialchars($component['name']); ?>"
+                                     data-formula="<?php echo htmlspecialchars($component['formula'] ?? ''); ?>">
                                     <div class="flex-1">
                                         <label class="block text-sm font-medium text-gray-900">
                                             <?php echo htmlspecialchars($component['name']); ?>
@@ -132,7 +140,7 @@ include __DIR__ . '/../layout/header.php';
                                             <input type="number" 
                                                    name="components[<?php echo $component['id']; ?>]" 
                                                    value="<?php echo $current_amounts[$component['id']] ?? ''; ?>"
-                                                   class="form-input w-32 text-right" 
+                                                   class="component-amount form-input w-32 text-right" 
                                                    step="0.01" 
                                                    placeholder="0.00"
                                                    <?php echo $component['is_mandatory'] ? 'required' : ''; ?>>
@@ -143,50 +151,6 @@ include __DIR__ . '/../layout/header.php';
                         <?php endforeach; ?>
                     </div>
                 </div>
-
-                <!-- Reimbursements -->
-                <?php 
-                $hasReimbursements = false;
-                foreach ($salary_components as $component) {
-                    if ($component['type'] === 'reimbursement') {
-                        $hasReimbursements = true;
-                        break;
-                    }
-                }
-                ?>
-                
-                <?php if ($hasReimbursements): ?>
-                <div class="mb-8">
-                    <h4 class="text-md font-semibold text-blue-700 mb-4">Reimbursements</h4>
-                    <div class="space-y-4">
-                        <?php foreach ($salary_components as $component): ?>
-                            <?php if ($component['type'] === 'reimbursement'): ?>
-                                <div class="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
-                                    <div class="flex-1">
-                                        <label class="block text-sm font-medium text-gray-900">
-                                            <?php echo htmlspecialchars($component['name']); ?>
-                                        </label>
-                                        <p class="text-xs text-gray-500">
-                                            <?php echo htmlspecialchars($component['code']); ?>
-                                        </p>
-                                    </div>
-                                    <div class="ml-4">
-                                        <div class="flex items-center">
-                                            <span class="text-blue-600 mr-2">₹</span>
-                                            <input type="number" 
-                                                   name="components[<?php echo $component['id']; ?>]" 
-                                                   value="<?php echo $current_amounts[$component['id']] ?? ''; ?>"
-                                                   class="form-input w-32 text-right" 
-                                                   step="0.01" 
-                                                   placeholder="0.00">
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-                <?php endif; ?>
 
                 <!-- Summary -->
                 <div class="bg-gray-50 p-6 rounded-lg">
@@ -223,57 +187,42 @@ include __DIR__ . '/../layout/header.php';
     </form>
 </div>
 
+<script src="/public/js/payroll.js"></script>
 <script>
-// Calculate totals when amounts change
-function calculateTotals() {
-    let totalEarnings = 0;
-    let totalDeductions = 0;
-    
-    // Calculate earnings
-    document.querySelectorAll('.bg-green-50 input[type="number"]').forEach(input => {
-        const value = parseFloat(input.value) || 0;
-        totalEarnings += value;
-    });
-    
-    // Calculate deductions
-    document.querySelectorAll('.bg-red-50 input[type="number"]').forEach(input => {
-        const value = parseFloat(input.value) || 0;
-        totalDeductions += value;
-    });
-    
-    const netSalary = totalEarnings - totalDeductions;
-    
-    // Update display
-    document.getElementById('total-earnings').textContent = '₹' + totalEarnings.toLocaleString('en-IN', {minimumFractionDigits: 2});
-    document.getElementById('total-deductions').textContent = '₹' + totalDeductions.toLocaleString('en-IN', {minimumFractionDigits: 2});
-    document.getElementById('net-salary').textContent = '₹' + netSalary.toLocaleString('en-IN', {minimumFractionDigits: 2});
-}
-
-// Add event listeners to all amount inputs
-document.querySelectorAll('input[type="number"]').forEach(input => {
-    input.addEventListener('input', calculateTotals);
+// Initialize salary structure form
+document.addEventListener('DOMContentLoaded', function() {
+    setupSalaryStructureForm(document.getElementById('salary-structure-form'));
 });
-
-// Calculate initial totals
-calculateTotals();
 
 // Form submission
-document.querySelector('form').addEventListener('submit', function(e) {
-    const netSalary = parseFloat(document.getElementById('net-salary').textContent.replace('₹', '').replace(/,/g, ''));
+document.getElementById('salary-structure-form').addEventListener('submit', function(e) {
+    e.preventDefault();
     
-    if (netSalary <= 0) {
-        e.preventDefault();
-        showMessage('Net salary must be greater than zero', 'error');
-        return;
-    }
+    const formData = new FormData(this);
     
     showLoading();
-});
-
-// Auto-calculate formula-based components
-document.addEventListener('DOMContentLoaded', function() {
-    // This would implement formula calculation logic
-    // For now, we'll just show the current values
+    
+    fetch('/employees/<?php echo $employee['id']; ?>/salary-structure', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        hideLoading();
+        if (data.success) {
+            showMessage(data.message, 'success');
+            setTimeout(() => {
+                window.location.href = '/employees/<?php echo $employee['id']; ?>';
+            }, 2000);
+        } else {
+            showMessage(data.message, 'error');
+        }
+    })
+    .catch(error => {
+        hideLoading();
+        console.error('Error:', error);
+        showMessage('An error occurred while saving salary structure', 'error');
+    });
 });
 </script>
 

@@ -203,6 +203,13 @@ $router->addRoute('GET', '/api/notifications/unread-count', 'Notification', 'get
 $router->addRoute('GET', '/settings/backups', 'Backup', 'index');
 $router->addRoute('POST', '/settings/backups', 'Backup', 'index');
 
+// System Information routes
+$router->addRoute('GET', '/system-info', 'SystemInfo', 'index');
+$router->addRoute('GET', '/system-info/php', 'SystemInfo', 'phpInfo');
+$router->addRoute('GET', '/system-info/database', 'SystemInfo', 'databaseInfo');
+$router->addRoute('GET', '/system-info/performance', 'SystemInfo', 'performanceMetrics');
+$router->addRoute('GET', '/system-info/logs', 'SystemInfo', 'errorLogs');
+
 // Additional API routes
 $router->addRoute('GET', '/api/generate-employee-code', 'Employee', 'generateEmployeeCode');
 $router->addRoute('POST', '/employees/bulk-update-salary', 'Employee', 'bulkUpdateSalary');
